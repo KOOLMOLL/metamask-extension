@@ -146,9 +146,17 @@ export default function CreateNewVault({
         >
           <Typography>{t('secretRecoveryPhrase')}</Typography>
         </label>
+        <TextField
+          id="create-new-vault__srp"
+          type="password"
+          onChange={(e) => onSeedPhraseChange(e.target.value)}
+          value={seedPhrase}
+          placeholder={t('seedPhrasePlaceholderPaste')}
+          autoComplete="off"
+          onPaste={clearClipboard}
+        />
         {showSeedPhrase ? (
           <textarea
-            id="create-new-vault__srp"
             className="create-new-vault__srp-shown"
             onChange={(e) => onSeedPhraseChange(e.target.value)}
             onPaste={clearClipboard}
@@ -156,17 +164,7 @@ export default function CreateNewVault({
             placeholder={t('seedPhrasePlaceholder')}
             autoComplete="off"
           />
-        ) : (
-          <TextField
-            id="create-new-vault__srp"
-            type="password"
-            onChange={(e) => onSeedPhraseChange(e.target.value)}
-            value={seedPhrase}
-            placeholder={t('seedPhrasePlaceholderPaste')}
-            autoComplete="off"
-            onPaste={clearClipboard}
-          />
-        )}
+        ) : null}
         {seedPhraseError ? (
           <Typography
             color={COLORS.ERROR1}
